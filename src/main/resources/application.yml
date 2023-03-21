@@ -1,0 +1,33 @@
+micronaut:
+  application:
+    name: micronautDataSql
+  security:
+    authentication: bearer
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:ChangeThis888888889898989898989898}"'
+        generator:
+          refresh-token:
+            secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:ChangeThis98097987897678676565465344535432542354354}"'
+            enabled: true
+          access-token:
+            expiration: 3600
+datasources:
+  default:
+    url: jdbc:mysql://localhost:3306/db
+    username: root
+    password: ''
+    driver-class-name: org.mariadb.jdbc.Driver
+    schema-generate: CREATE_DROP
+    db-type: mariadb
+netty:
+  default:
+    allocator:
+      max-order: 3
+flyway:
+  datasources:
+    default:
+      enabled: true
